@@ -1,8 +1,9 @@
 package enum
 
 import (
-	"fmt"
 	"testing"
+
+	"github.com/zddava/goext/assert"
 )
 
 type ISP Enum
@@ -15,6 +16,9 @@ var (
 
 func TestEmun(t *testing.T) {
 	// 根据字符串解析
-	isp := ParseEnum[ISP]("cmcc")
-	fmt.Println(isp)
+	isp := ParseEnum[ISP]("ctcc")
+	assert.Equals(CTCC, isp, t)
+
+	isp = ParseEnum[ISP]("xxxx")
+	assert.Nil(isp, t)
 }
