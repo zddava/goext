@@ -4,7 +4,7 @@ type Stack[T any] struct {
 	data []T
 }
 
-func NewStack[T comparable]() *Stack[T] {
+func NewStack[T any]() *Stack[T] {
 	return &Stack[T]{
 		data: make([]T, 0),
 	}
