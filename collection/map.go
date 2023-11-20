@@ -1,5 +1,6 @@
 package collection
 
+/** DMap */
 type DMap[K1 comparable, K2 comparable, V any] map[K1]map[K2]V
 
 func NewDMap[K1 comparable, K2 comparable, V any]() DMap[K1, K2, V] {
@@ -23,6 +24,7 @@ func HasDMapKey[K1 comparable, K2 comparable, V any](m DMap[K1, K2, V], k1 K1, k
 	return ok
 }
 
+/** SliceMap */
 type SliceMap[K comparable, V any] map[K][]V
 
 func NewSliceMap[K comparable, V any]() SliceMap[K, V] {
@@ -35,40 +37,4 @@ func AddSliceMapValue[K comparable, V any](m SliceMap[K, V], key K, value V) {
 	}
 
 	m[key] = append(m[key], value)
-}
-
-type Set[T comparable] map[T]bool
-
-func NewSet[T comparable]() Set[T] {
-	return make(Set[T])
-}
-
-func AddToSet[T comparable](set Set[T], value T) Set[T] {
-	set[value] = true
-	return set
-}
-
-func SetValues[T comparable](set Set[T]) (list []T) {
-	for k := range set {
-		list = append(list, k)
-	}
-
-	return list
-}
-
-func AddToSlice[T any](slice *[]T, value ...T) {
-	if slice == nil {
-		*slice = make([]T, 0)
-	}
-
-	*slice = append(*slice, value...)
-}
-
-func EqualsAny[T comparable](one T, values ...T) bool {
-	for _, v := range values {
-		if one == v {
-			return true
-		}
-	}
-	return false
 }
