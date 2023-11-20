@@ -20,6 +20,10 @@ func PopFromStack[T any](s *Stack[T]) T {
 	return ret
 }
 
+func PeekFromStack[T any](s *Stack[T]) T {
+	return s.data[StackLen(s)-1]
+}
+
 func StackLen[T any](s *Stack[T]) int {
 	return len(s.data)
 }
