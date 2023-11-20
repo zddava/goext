@@ -10,8 +10,8 @@ func NewStack[T any]() *Stack[T] {
 	}
 }
 
-func PushToStack[T any](s *Stack[T], e T) {
-	s.data = append(s.data, e)
+func PushToStack[T any](s *Stack[T], e *T) {
+	s.data = append(s.data, *e)
 }
 
 func PopFromStack[T any](s *Stack[T]) T {
